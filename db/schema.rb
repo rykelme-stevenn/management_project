@@ -11,4 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 0) do
+  create_table "Franchises", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", limit: 50, null: false
+    t.string "cnpj", limit: 18, null: false
+    t.text "logo"
+    t.string "slug", limit: 50, null: false
+    t.boolean "active", default: true
+    t.timestamp "updated_at", default: -> { "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" }
+    t.timestamp "created_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.index ["cnpj"], name: "cnpj", unique: true
+    t.index ["slug"], name: "slug", unique: true
+  end
 end

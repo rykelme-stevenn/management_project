@@ -22,7 +22,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: storage/test.sqlite3
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: localhost
+  database: management_project_development
 
 
 # Store production database in the storage/ directory, which by default
