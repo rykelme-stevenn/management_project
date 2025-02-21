@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-#.env file
+# .env file
 gem 'dotenv-rails', groups: [:development, :test]
 
-#mysql 12
+# mysql 12
 gem 'mysql2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
