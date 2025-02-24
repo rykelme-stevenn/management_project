@@ -11,4 +11,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  
+  #RESTful
+  resources :users, only: [:index, :show, :create, :update, :destroy]
+  
+  post 'login', to: 'authentication#login'
 end

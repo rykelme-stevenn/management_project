@@ -3,8 +3,14 @@ source "https://rubygems.org"
 # .env file
 gem "dotenv-rails", groups: [ :development, :test ]
 
-# mysql 12
-gem "mysql2"
+# postgre
+gem 'pg'
+
+#Bcrypt
+gem 'bcrypt', '~> 3.1.7'
+
+#JWT token
+gem 'jwt'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
