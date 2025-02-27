@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_24_032639) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_27_030403) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -64,10 +64,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_032639) do
     t.datetime "updated_at", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.bigint "franchise_id", null: false
+    t.index ["franchise_id"], name: "index_users_on_franchise_id"
     t.index ["store_id"], name: "index_users_on_store_id"
   end
 
   add_foreign_key "stores", "addresses"
   add_foreign_key "stores", "franchises"
+  add_foreign_key "users", "franchises"
   add_foreign_key "users", "stores"
 end

@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   belongs_to :store, optional: false
+  belongs_to :franchise, optional: false
 
   validates :name, presence: true
   validates :cpf, presence: true
