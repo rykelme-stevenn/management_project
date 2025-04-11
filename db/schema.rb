@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_030403) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_02_011231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,6 +25,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_030403) do
     t.string "country", default: "Brasil"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "cpf", null: false
+    t.date "birth_date", null: false
+    t.text "observation"
+    t.string "tel_main"
+    t.string "tel_sec"
+    t.string "email"
+    t.bigint "address_id"
+    t.bigint "work_address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "franchise_id"
+    t.index ["address_id"], name: "index_clients_on_address_id"
+    t.index ["franchise_id"], name: "index_clients_on_franchise_id"
+    t.index ["work_address_id"], name: "index_clients_on_work_address_id"
   end
 
   create_table "franchises", force: :cascade do |t|
@@ -69,6 +87,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_030403) do
     t.index ["store_id"], name: "index_users_on_store_id"
   end
 
+  add_foreign_key "clients", "addresses"
+  add_foreign_key "clients", "addresses", column: "work_address_id"
+  add_foreign_key "clients", "franchises"
   add_foreign_key "stores", "addresses"
   add_foreign_key "stores", "franchises"
   add_foreign_key "users", "franchises"

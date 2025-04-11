@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # 🔹 Rotas que exigem o `franchise_slug`
   scope "/api/:franchise_id" do
     resources :users, only: [:index, :show, :create, :update, :destroy] # TODAS as rotas de usuários agora exigem o slug
+    resources :clients, only: [:index, :show, :create, :update, :destroy]
+    resources :addresses, only: [:index, :show, :create, :update, :destroy]
   end
 
   # 🔹 Rotas gerais (SEM `franchise_slug`, ex: login)
